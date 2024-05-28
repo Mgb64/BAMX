@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Amazon Books</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Bienvenido al Dashboard de Amazon Books</h1>
+
+    <h2>Top 10 Peores Libros Rankeados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Libro</th>
+                <th>Nombre del Autor</th>
+                <th>Rating</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% peores.forEach(book => { %>
+                <tr>
+                    <td><%= book['COL 1'] %></td>
+                    <td><%= book['COL 2'] %></td>
+                    <td><%= book['COL 3'] %></td>
+                    <td><%= book['COL 4'] %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <h2>Top 10 Mejores Libros Rankeados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Libro</th>
+                <th>Nombre del Autor</th>
+                <th>Rating</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% mejores.forEach(book => { %>
+                <tr>
+                    <td><%= book['COL 1'] %></td>
+                    <td><%= book['COL 2'] %></td>
+                    <td><%= book['COL 3'] %></td>
+                    <td><%= book['COL 4'] %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <h2>Número de Libros por Rating</h2>
+    <canvas id="ratingCountChart" width="400" height="200"></canvas>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ratingCount = <%- JSON.stringify(ratingCount) %>;
+            console.log('Datos del gráfico de conteo de ratings:', ratingCount);
+
+            if (ratingCount && ratingCount.length) {
+                const labels = ratingCount.map(item => item.rating);
+                const data = ratingCount.map(item => item.count);
+                console.log('Etiquetas:', labels);
+                console.log('Datos:', data);
+
+                const dataRatingCount = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Número de Libros',
+                        data: data,
+                        backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }]
+                };
+
+                const ctxRatingCount = document.getElementById('ratingCountChart').getContext('2d');
+                new Chart(ctxRatingCount, {
+                    type: 'bar',
+                    data: dataRatingCount,
+                    options: {
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Rating'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Número de Libros'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            } else {
+                console.error('No se encontraron datos para el gráfico de conteo de ratings.');
+            }
+        });
+    </script>
+</body>
+</html>
