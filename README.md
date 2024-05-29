@@ -1,8 +1,13 @@
-# DASHBOARD DE SOBRE LA CALIFICACIÓN DE LIBROS VENDIDOS EN AMAZON
+# DASHBOARD SOBRE LA CALIFICACIÓN DE LIBROS VENDIDOS EN AMAZON
  
 ###  Descripción:
-Este es un proyecto hecho con javascript, nodejs y myql que crea un dashboard de una base de datos en donde esta almacenada información sobre los libros que se venden en amazon books.  
+Este es un proyecto hecho con nodejs y myql que crea un dashboard de una base de datos en donde esta almacenada información sobre los libros que se venden en amazon books.  
 La base de datos se descargo de [aquí](https://www.kaggle.com/datasets/khushikhushikhushi/amazon-bestselling-books)
+
+![Login](/screenshots/login.png)
+![Dashboard](/screenshots/db1.png)
+![Dashboard](/screenshots/db2.png)
+![Dashboard](/screenshots/db3.png)
 
 ###  Integrantes
 
@@ -16,11 +21,14 @@ La base de datos se descargo de [aquí](https://www.kaggle.com/datasets/khushikh
  - [Ian Zepeda](https://github.com/I4NzG)
 
 ### Requerimientos
-1. Se necesitan dos bases de datos para el proyecto, estas estarán dentro del repositorio en formato .sql, importarlas en MySQL, una opcion recomendable es hacerlo con XAAMP. Estas son:
+1. Necesitarás instalar dos bases de datos para el proyecto, estas estarán dentro del repositorio en formato .sql, importarlas en MySQL. Una opción recomendable es hacerlo con XAAMP. Estas son:
    - AmazonBooks.sql
    - nodejs-login.sql
+Las puedes encontrar dentro del repositorio.
 
-3. Typescript, NodeJS, MySQL(Xaamp).
+2. NodeJS v20.12.2
+
+3. MariaDB v10.4.32
 
 ### Instrucciones
 1. Primeramente necesitamos clonar el repositorio.
