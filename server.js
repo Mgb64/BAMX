@@ -1,3 +1,4 @@
+// Si el entorno no es 'production', cargar las variables de entorno desde el archivo .env
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
@@ -11,9 +12,11 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 const mysql = require('mysql');
 
+// Inicializar la configuración de Passport
 const initializePassport = require('./passport-config');
 initializePassport(
     passport,
+    // Función para obtener un usuario por email
     async (email) => {
         return new Promise((resolve, reject) => {
             db.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
@@ -25,6 +28,7 @@ initializePassport(
             });
         });
     },
+    // Función para obtener un usuario por id
     async (id) => {
         return new Promise((resolve, reject) => {
             db.query('SELECT * FROM users WHERE id = ?', [id], (error, results) => {
@@ -38,6 +42,7 @@ initializePassport(
     }
 );
 
+// Configurar el motor de vistas y middlewares
 app.set('view-engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
@@ -66,6 +71,7 @@ const dbAmazonBooks = mysql.createConnection({
     database: process.env.DATABASE2
 });
 
+// Conectar a la base de datos nodejs-login
 db.connect((error) => {
     if (error) {
         console.log("Error al conectar a nodejs-login:", error);
@@ -74,6 +80,7 @@ db.connect((error) => {
     }
 });
 
+// Conectar a la base de datos AmazonBooks
 dbAmazonBooks.connect((error) => {
     if (error) {
         console.log("Error al conectar a AmazonBooks:", error);
@@ -97,12 +104,14 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 // Ruta para el registro
 app.post('/register', checkNotAuthenticated, async (req, res) => {
     try {
+        // Hashear la contraseña del usuario
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = {
             name: req.body.name,
             email: req.body.email,
             password: hashedPassword
         };
+        // Insertar el nuevo usuario en la base de datos
         db.query('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', 
             [newUser.name, newUser.email, newUser.password],
             (error, results) => {
@@ -130,6 +139,7 @@ app.delete('/logout', (req, res, next) => {
 
 // Nueva ruta para el dashboard
 app.get('/dashboard', checkAuthenticated, (req, res) => {
+    // Consultas SQL para obtener los libros con peor calificación, mejor calificación y conteo de ratings
     let sqlPeores = `
         SELECT * FROM (
             SELECT DISTINCT \`COL 1\`, \`COL 2\`, \`COL 3\`, \`COL 4\`
@@ -158,6 +168,7 @@ app.get('/dashboard', checkAuthenticated, (req, res) => {
         ORDER BY \`COL 3\`
     `;
 
+    // Ejecutar las consultas y renderizar la vista del dashboard
     dbAmazonBooks.query(sqlPeores, (err, resultsPeores) => {
         if (err) throw err;
 
@@ -176,7 +187,6 @@ app.get('/dashboard', checkAuthenticated, (req, res) => {
         });
     });
 });
-
 
 // Funciones de autenticación
 function checkAuthenticated(req, res, next) {
@@ -198,4 +208,5 @@ app.listen(3000, () => {
     console.log("Servidor iniciado en el puerto 3000");
 });
 
+// Servir archivos estáticos desde la carpeta 'public'
 app.use(express.static('public'));

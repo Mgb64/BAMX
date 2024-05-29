@@ -1,26 +1,35 @@
+// Importar el módulo express
+const express = require('express');
+// Crear una instancia de Router de express
+const router = express.Router();
 
-const express = require('express')
-const router = express.Router()
-
+// Ruta para la página principal ('/')
 router.get('/', (req, res) => {
+  // Verificar si hay un usuario autenticado
   if (req.user) {
-    res.render('index.ejs', { name: req.user.name });
+    // Renderizar la vista 'index.ejs' pasando el nombre del usuario autenticado
+    res.render('dashboard.ejs', { name: req.user.name });
   } else {
-    // Handle the case where no user is logged in:
-    // Option 1: Redirect to login
+    // Manejar el caso donde no hay un usuario autenticado
+    // Opción 1: Redirigir a la página de login
     res.redirect('/login');
 
-    // Option 2: Render with a default or no name
+    // Opción 2: Renderizar la vista con un nombre por defecto o sin nombre
     // res.render('index.ejs', { name: 'Guest' });
   }
 });
 
+// Ruta para la página de registro ('/register')
 router.get('/register', (req, res) => {
-  res.render('register.ejs')
-})
+  // Renderizar la vista 'register.ejs'
+  res.render('register.ejs');
+});
 
+// Ruta para la página de login ('/login')
 router.get('/login', (req, res) => {
-   res.render('login.ejs')
-})
+  // Renderizar la vista 'login.ejs'
+  res.render('login.ejs');
+});
 
+// Exportar el router para usarlo en otros módulos
 module.exports = router;
