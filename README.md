@@ -1,16 +1,8 @@
-# PROYECTO PARA EL BANCO DE ALIMENTOS DE HERMOSILLO
+# DASHBOARD DE SOBRE LA CALIFICACIÓN DE LIBROS VENDIDOS EN AMAZON
  
 ###  Descripción:
-Aplicación software que permita a sus usuarios capturar los datos requeridos sobre su vivienda y familia para aplicar al recibimiento de apoyo alimentario por parte de BAMX, y a los encargados del banco gestionar con mayor facilidad dichas aplicaciones al programa.
- 
-### Objetivo general:
-Desarrollar un software que haga más sencillo el proceso de aplicación al programa tanto a los aspirantes como a los encargados, mediante una plataforma en la que se puedan introducir los datos del aspirante y una base de datos en la que se almacenen para fácil acceso.
- 
-###  Objetivo específicos:
-- Desarrollar una plataforma en la que se puedan capturar los datos de acuerdo al formato de BAMX
-- Desarrollar una base de datos en la que se puedan almacenar los datos
-- Desarrollar un mapa de calor en el que se puedan visualizar las áreas con mayor densidad de apoyados
-- Permitir el sencillo y ordenado acceso a la información de los aspirantes para darlos de alta o baja
+Este es un proyecto hecho con javascript, nodejs y myql que crea un dashboard de una base de datos en donde esta almacenada información sobre los libros que se venden en amazon books.  
+La base de datos se descargo de [aquí](https://www.kaggle.com/datasets/khushikhushikhushi/amazon-bestselling-books)
 
 ###  Integrantes
 
@@ -24,9 +16,11 @@ Desarrollar un software que haga más sencillo el proceso de aplicación al prog
  - [Ian Zepeda](https://github.com/I4NzG)
 
 ### Requerimientos
-1. Se necesitan dos bases de datos para el proyecto, estas estarán dentro del repositorio en formato .sql, importarlas en MySQL, una opcion recomendable es hacerlo con XAAMP.
+1. Se necesitan dos bases de datos para el proyecto, estas estarán dentro del repositorio en formato .sql, importarlas en MySQL, una opcion recomendable es hacerlo con XAAMP. Estas son:
+   - AmazonBooks.sql
+   - nodejs-login.sql
 
-2. Instalar NodeJS.
+3. Typescript, NodeJS, MySQL(Xaamp).
 
 ### Instrucciones
 1. Primeramente necesitamos clonar el repositorio.
