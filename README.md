@@ -22,3 +22,27 @@ Desarrollar un software que haga más sencillo el proceso de aplicación al prog
  - [Ernesto Carrasco](https://github.com/jesuscarra) 
  - [Ricardo Peña](https://github.com/RemilZarza)
  - [Ian Zepeda](https://github.com/I4NzG)
+
+### Requerimientos
+1. Se necesitan dos bases de datos para el proyecto, estas estarán dentro del repositorio en formato .sql, importarlas en MySQL, una opcion recomendable es hacerlo con XAAMP.
+
+2. Instalar NodeJS.
+
+### Instrucciones
+1. Primeramente necesitamos clonar el repositorio.
+
+    ```git clone https://github.com/Proyecto-ingenieria-de-software-BAMX/BAMX.git```
+
+ 2. Una vez dentro de la carpeta del repositorio ejecutaremos el siguiente comando para instalar  
+   todas nuestras dependencias necesarias para el proyecto.
+   
+     ```npm install```
+
+3.  Ahora corremos el proyecto ejecutando el siguiente script.
+
+     ```npm run devStart```
+     
+4. Por último entramos al puerto 3000 en nuestro navegador de preferencia.
+
+   ```localhost:3000```
+      
