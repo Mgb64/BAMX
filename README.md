@@ -4,10 +4,10 @@
 Este es un proyecto hecho con nodejs y myql que crea un dashboard de una base de datos en donde esta almacenada información sobre los libros que se venden en amazon books.  
 La base de datos se descargo de [aquí](https://www.kaggle.com/datasets/khushikhushikhushi/amazon-bestselling-books)
 
-![Login](/screenshots/login.png)
-![Dashboard](/screenshots/db1.png)
-![Dashboard](/screenshots/db2.png)
-![Dashboard](/screenshots/db3.png)
+![Login](./Screenshots/login.png)
+![Dashboard](./Screenshots/db1.png)
+![Dashboard](/Screenshots/db2.png)
+![Dashboard](/Screenshots/db3.png)
 
 ###  Integrantes
 
